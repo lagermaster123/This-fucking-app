@@ -78,7 +78,7 @@ module.exports.place = async (req, res) => {
     const { result, statusCode } = await square.paymentsApi.createPayment(
       payment
     );
-
+      console.log('result: ', result)
     if(result.payment.status === 'COMPLETED') {
       let newCustomer
       const newOrder = new Order({
@@ -99,8 +99,8 @@ module.exports.place = async (req, res) => {
         newOrder.customer = currentCustomer._id
         await currentCustomer.save()
         await newOrder.save()
-      } else if (payload.username.length > 0) { 
-        const user = await User.findOne({ username: payload.username })
+      } else if (payload.user.length > 0) { 
+        const user = await User.findOne({ _id: payload.user })
         if (user) {
           user.orders.push(newOrder._id)
           await user.save()
@@ -141,7 +141,7 @@ module.exports.place = async (req, res) => {
   } catch (ex) {
     if (ex instanceof ApiError) {
       // likely an error in the request. don't retry
-      throw new ExpressError('error on payment request', 400)
+      throw new ExpressError('error on payment request', 400);
     } else {
       // IDEA: send to error reporting service
       const msg = `Error creating payment: ${ex}`

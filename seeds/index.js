@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const products = require('./products')
 const Product = require('../models/Product')
 const categories = ['Valentines Day', 'Get Well', 'Love and Romance', 'Sympathy and Funeral', 'Birthdays', 'Other Events']
-const Category = require('../models/category')
+const Category = require('../models/Category')
 const passport = require('passport')
 const dbUrl = process.env.DB_URL
 
