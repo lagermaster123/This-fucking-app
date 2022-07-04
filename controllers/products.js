@@ -1,5 +1,5 @@
-const Product = require('../models/product')
-const Category = require('../models/category')
+const Product = require('../models/Product')
+const Category = require('../models/Category')
 
 module.exports.getAllProducts = async (req, res) => {
     let args = {}
