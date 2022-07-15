@@ -5,7 +5,7 @@ const CatchAsync = require('../utils/CatchAsync')
 
 router.post('/place', validateOrder, order.place)
 
-router.get('/get-order', isLoggedIn, isAdmin, CatchAsync(order.get))
+router.get('/get-orders', isLoggedIn, isAdmin, CatchAsync(order.get))
 
 router.post('/complete', isLoggedIn, isAdmin, CatchAsync(order.complete))
 

@@ -5,7 +5,7 @@ export const getOrders = () => async (dispatch) => {
     try {
         dispatch({ type: actionTypes.GET_ORDERS_REQUEST })
 
-        const { data } = await axios.get('/dashboard/orders')
+        const { data } = await axios.get('/order/get-orders')
         const payload = data.map(d => ({ ...d }))
 
         dispatch({
