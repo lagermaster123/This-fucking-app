@@ -9,7 +9,7 @@ const OrderSchema = new Schema({
     amount: Number,
     customer: {
         type: Schema.Types.ObjectId,
-        ref: 'Customers'
+        ref: 'User'
     },
     items: [{
         product: {
@@ -28,4 +28,4 @@ const OrderSchema = new Schema({
     status: {type: 'String', required: true}
 })
 
-module.exports = mongoose.models.Order || mongoose.model('Order', OrderSchema)
+module.exports = mongoose.model('Order', OrderSchema)

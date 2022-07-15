@@ -1,6 +1,9 @@
 import React from 'react'
 
-function Settings() {
+function Settings({ setHeader }) {
+  React.useEffect(() => {
+    setHeader('Settings')
+  }, [])
   return (
     <div>Settings</div>
   )

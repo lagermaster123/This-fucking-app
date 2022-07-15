@@ -3,16 +3,16 @@ const ExpressError = require('./utils/ExpressError');
 
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
-        res.status(400).send({ message: 'user must be logged in'})
+        return res.status(400).send({ message: 'user must be logged in'})
     }
     next();
 }
 
 module.exports.isAdmin = (req, res, next) => {
-    if(req.user.role !== 'Admin') {
-        req.session.returnTo = req.originalUrl
-        req.flash('error', 'you must be signed in first!')
-        return res.redirect('/login')
+    if(req.user.role !== 'ADMIN') {
+        return res.status(400).send({ message: "you can't access this page"})
+    } else {
+        next()
     }
 }
 

@@ -1,6 +1,9 @@
 import React from 'react'
 
-function Products() {
+function Products({ setHeader }) {
+  React.useEffect(() => {
+    setHeader('Products')
+  }, [])
   return (
     <div>Products</div>
   )

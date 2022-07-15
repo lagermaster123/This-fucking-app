@@ -27,7 +27,6 @@ const productsRouter = require('./routes/products')
 const orderRouter = require('./routes/order')
 const userRouter = require('./routes/user')
 const uploadRouter = require('./routes/upload')
-const dashboardRouter = require('./routes/dashboard')
 
 const app = express()
 const mongoose = require('mongoose')
@@ -88,7 +87,6 @@ app.use('/products', productsRouter)
 app.use('/order', orderRouter)
 app.use('/user', userRouter)
 app.use('/upload', uploadRouter)
-app.use('/dashboard', dashboardRouter)
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
